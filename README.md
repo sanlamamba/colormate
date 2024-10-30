@@ -1,164 +1,106 @@
-# @colormate/core
+# Colormate
 
 ![npm version](https://img.shields.io/npm/v/@colormate/core?color=blue&style=flat-square) 
 ![license](https://img.shields.io/badge/license-MIT-green?style=flat-square) 
 ![issues](https://img.shields.io/github/issues/sanlamamba/colormate?color=yellow&style=flat-square) 
 
-**A modular and efficient color utility library for TypeScript and JavaScript applications**  
-`@colormate/core` provides fast and flexible color conversions, validation, adjustments, and color generation utilities, with an optimized, memoized architecture to boost performance.
+**Colormate** is a flexible and powerful color management library designed for JavaScript and TypeScript applications. With separate modules for core color transformations and theme management, Colormate offers developers an optimized, modular way to handle color conversions, validations, adjustments, and theming.
 
 ---
 
 ## Table of Contents
 
+- [About Colormate](#about-colormate)
+- [Packages](#packages)
+  - [@colormate/core](#colormatecore)
+  - [@colormate/theming](#colormatetheme)
 - [Installation](#installation)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Examples](#examples)
-    - [Color Conversions](#color-conversions)
-    - [Color Validation](#color-validation)
-    - [Brightness Adjustments](#brightness-adjustments)
-    - [Complementary Color Generation](#complementary-color-generation)
-- [API Reference](#api-reference)
+- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
 ---
 
+## About Colormate
+
+Colormate brings together essential color utilities and a powerful theme management system, catering to modern applications that need precise color manipulation. It’s built with modularity in mind, making it easy to use and extend only what you need, whether that’s color transformations, validations, or responsive theming.
+
+---
+
+## Packages
+
+### @colormate/core
+
+The `core` package provides a set of robust utilities for handling color transformations, validations, and adjustments, including:
+- Conversions between HEX, RGB, HSL, and CMYK formats.
+- Validation utilities for multiple color formats.
+- Brightness adjustment functions.
+- Complementary color generation.
+- Optimized performance with built-in caching and memoization.
+
+For detailed usage instructions, see the [@colormate/core documentation](./packages/core/README.md).
+
+### @colormate/theming
+
+The `theming` package extends the core capabilities of Colormate, offering developers a comprehensive toolkit to manage color themes with ease. Key features include:
+- **Dark and Light Mode Support**: Seamlessly switch between dark and light themes.
+- **Tailwind and Bootstrap Color Compatibility**: Apply color classes like `text-white`, `bg-dark`, etc., in a way that integrates smoothly with existing frameworks.
+- **Theme Provider and Context**: Easily manage and apply theme colors across your application using React and Next.js.
+- **Color Class Utilities**: Dynamically assign color classes like `bg-light` or `text-dark` based on current theme settings.
+
+Stay tuned for the full release of `@colormate/theming`!
+
+---
+
 ## Installation
 
-To get started with `@colormate/core`, simply install it via npm:
+Install each package independently based on your requirements.
+
+For core utilities:
 
 ```bash
 npm install @colormate/core
 ```
 
----
+For theme management (coming soon):
 
-## Features
-
-- **Color Conversions**: Convert between HEX, RGB, HSL, and CMYK formats.
-- **Color Validation**: Validate HEX, RGB, HSL, and CMYK formats.
-- **Brightness Adjustments**: Adjust the brightness of RGB colors by a given percentage.
-- **Complementary Color Generation**: Generate complementary colors from HEX input.
-- **Memoization**: Optimized conversion classes with built-in caching to prevent redundant calculations.
-- **Modular Structure**: Organized for scalability and ease of maintenance.
+```bash
+npm install @colormate/theming
+```
 
 ---
 
-## Getting Started
+## Usage
 
-### Examples
+With Colormate, you can import only the functionality you need from each package.
 
-#### 1. Color Conversions
+### Basic Example with @colormate/core
 
-Convert between color formats, such as HEX to RGB, RGB to HSL, etc.
+Convert between color formats, adjust brightness, or validate color input with `@colormate/core`.
 
 ```typescript
-import { HexToRgb, RgbToHex, RgbToHsl, RgbToCmyk, CmykToRgb } from "@colormate/core";
+import { HexToRgb, RgbToHex, ColorValidator } from "@colormate/core";
 
 // Convert HEX to RGB
-const rgbColor = HexToRgb.convertHexToRgb("#FF5733"); // { r: 255, g: 87, b: 51 }
+const rgbColor = HexToRgb.convertHexToRgb("#FF5733");
 
-// Convert RGB to HEX
-const hexColor = RgbToHex.convertRgbToHex({ r: 255, g: 87, b: 51 }); // #FF5733
+// Validate RGB color
+const isValidRgb = ColorValidator.isValidRgb({ r: 255, g: 87, b: 51 });
 ```
 
-#### 2. Color Validation
-
-Validate different color formats to ensure they follow proper specifications.
-
-```typescript
-import { ColorValidator } from "@colormate/core";
-
-const isValidHex = ColorValidator.isValidHex("#FF5733"); // true
-const isValidRgb = ColorValidator.isValidRgb({ r: 255, g: 87, b: 51 }); // true
-```
-
-#### 3. Brightness Adjustments
-
-Adjust brightness by a percentage for RGB colors.
-
-```typescript
-import { BrightnessAdjuster } from "@colormate/core";
-
-const brighterColor = BrightnessAdjuster.adjust({ r: 100, g: 100, b: 100 }, 20); // Increase brightness by 20%
-```
-
-#### 4. Complementary Color Generation
-
-Generate the complementary color for any given HEX color.
-
-```typescript
-import { ColorComplementary } from "@colormate/core";
-
-const complementaryColor = ColorComplementary.getComplementary("#FF5733"); // The complementary HEX color
-```
-
----
-
-## API Reference
-
-### Color Converters
-
-- **HexToRgb.convertHexToRgb(hex: string): Rgb**  
-  Convert HEX to RGB.
-
-  - **hex**: `string` – HEX color value.
-  - **Returns**: `Rgb` – Object with `r`, `g`, and `b` properties.
-
-- **RgbToHex.convertRgbToHex(rgb: Rgb): string**  
-  Convert RGB to HEX.
-
-  - **rgb**: `Rgb` – Object with `r`, `g`, and `b` properties.
-  - **Returns**: `string` – HEX color value.
-
-### Color Validation
-
-- **ColorValidator.isValidHex(hex: string): boolean**  
-  Checks if a HEX color is valid.
-
-  - **hex**: `string` – HEX color value.
-  - **Returns**: `boolean` – True if valid, false otherwise.
-
-- **ColorValidator.isValidRgb(rgb: Rgb): boolean**  
-  Checks if an RGB color is valid.
-
-  - **rgb**: `Rgb` – Object with `r`, `g`, and `b` properties.
-  - **Returns**: `boolean` – True if valid, false otherwise.
-
-### Brightness Adjustments
-
-- **BrightnessAdjuster.adjust(rgb: Rgb, percent: number): Rgb**  
-  Adjusts brightness by a percentage.
-
-  - **rgb**: `Rgb` – Object with `r`, `g`, and `b` properties.
-  - **percent**: `number` – Percentage by which to adjust brightness.
-  - **Returns**: `Rgb` – Adjusted RGB color.
-
-### Complementary Colors
-
-- **ColorComplementary.getComplementary(hex: string): string**  
-  Generates the complementary color for a given HEX value.
-
-  - **hex**: `string` – HEX color value.
-  - **Returns**: `string` – Complementary HEX color.
-
----
 
 ## Contributing
 
-We welcome contributions to improve `@colormate/core`! Please follow these steps:
+We welcome contributions to Colormate! Please feel free to open issues, suggest features, or create pull requests. Follow these steps to contribute:
 
 1. Fork the repository.
-2. Create a new branch for your feature or fix.
-3. Submit a pull request with a detailed description.
+2. Create a new branch with your feature or fix.
+3. Submit a pull request with a detailed description of your changes.
 
-Ensure that your code follows existing conventions and includes tests for any new functionality.
+For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/sanlamamba/colormate/blob/main/LICENSE) file for more details.
-
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
