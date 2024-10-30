@@ -29,9 +29,9 @@
 
 To get started with `@colormate/core`, simply install it via npm:
 
-|||bash
+```bash
 npm install @colormate/core
-|||
+```
 
 ---
 
@@ -54,7 +54,7 @@ npm install @colormate/core
 
 Convert between color formats, such as HEX to RGB, RGB to HSL, etc.
 
-|||typescript
+```typescript
 import { HexToRgb, RgbToHex, RgbToHsl, RgbToCmyk, CmykToRgb } from "@colormate/core";
 
 // Convert HEX to RGB
@@ -62,38 +62,38 @@ const rgbColor = HexToRgb.convertHexToRgb("#FF5733"); // { r: 255, g: 87, b: 51 
 
 // Convert RGB to HEX
 const hexColor = RgbToHex.convertRgbToHex({ r: 255, g: 87, b: 51 }); // #FF5733
-|||
+```
 
 #### 2. Color Validation
 
 Validate different color formats to ensure they follow proper specifications.
 
-|||typescript
+```typescript
 import { ColorValidator } from "@colormate/core";
 
 const isValidHex = ColorValidator.isValidHex("#FF5733"); // true
 const isValidRgb = ColorValidator.isValidRgb({ r: 255, g: 87, b: 51 }); // true
-|||
+```
 
 #### 3. Brightness Adjustments
 
 Adjust brightness by a percentage for RGB colors.
 
-|||typescript
+```typescript
 import { BrightnessAdjuster } from "@colormate/core";
 
 const brighterColor = BrightnessAdjuster.adjust({ r: 100, g: 100, b: 100 }, 20); // Increase brightness by 20%
-|||
+```
 
 #### 4. Complementary Color Generation
 
 Generate the complementary color for any given HEX color.
 
-|||typescript
+```typescript
 import { ColorComplementary } from "@colormate/core";
 
 const complementaryColor = ColorComplementary.getComplementary("#FF5733"); // The complementary HEX color
-|||
+```
 
 ---
 
