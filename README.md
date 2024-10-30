@@ -1,1 +1,1 @@
-# colormate
+# Colormate Project

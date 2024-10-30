@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "lib": [
+      "ES6",
+      "DOM"
+    ],
+    "declaration": true,
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "src",
+    "paths": {
+      "@types_interfaces/*": [
+        "types_interfaces/*"
+      ],
+      "@conversions/*": [
+        "conversions/*"
+      ],
+      "@validators/*": [
+        "validators/*"
+      ],
+      "@adjustments/*": [
+        "adjustments/*"
+      ],
+      "@helpers/*": [
+        "helpers/*"
+      ],
+      "@generators/*": [
+        "generators/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "tests"
+  ]
+}

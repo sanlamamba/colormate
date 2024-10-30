@@ -1,0 +1,10 @@
+{
+  "name": "colormate",
+  "private": true,
+  "workspaces": [
+    "packages/core",
+    "packages/theming"
+  ],
+  "version": "1.0.0",
+  "license": "MIT"
+}
